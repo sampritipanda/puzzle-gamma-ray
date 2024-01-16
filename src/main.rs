@@ -188,8 +188,8 @@ fn main() {
 
     /* Enter your solution here */
 
-    let nullifier_hack = MNT4BigFr::from(0);
-    let secret_hack = MNT4BigFr::from(0);
+    let secret_hack = MNT4BigFr::from(MNT6BigFr::MODULUS) - MNT4BigFr::from(leaked_secret);
+    let nullifier_hack = <LeafH as CRHScheme>::evaluate(&leaf_crh_params, vec![secret_hack]).unwrap();
 
     /* End of solution */
 
